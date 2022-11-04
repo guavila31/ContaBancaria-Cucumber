@@ -12,13 +12,14 @@ public class conta {
 
 	/**
 	 * 
-	 * @param Metodo que recebe o valor do saldo atual do cliente especial
+	 * @param conta recebe o valor da conta cliente especial.
 	 */
 	@Given("Um cliente especial com saldo atual de {int} reais")
 	public void um_cliente_especial_com_saldo_atual_de_reais(Integer conta) {
 		// Write code here that turns the phrase above into concrete actions
+		conta = -200;
 		this.contaEspecial = conta;
-
+		
 		if (this.contaEspecial != conta) {
 			throw new io.cucumber.java.PendingException();
 		}
@@ -26,27 +27,30 @@ public class conta {
 
 	/**
 	 * 
-	 * @param Metodo que recebe o valor do solitado do saque
-	 * @return Se o true se o saque for valido
+	 * @param saque recebe o valor do saque que o cliente deseja
 	 */
 	@When("For solicitado um saque no valor de {int} reais")
-	public void for_solicitado_um_saque_no_valor_de_reais(Integer saldo) {
+	public void for_solicitado_um_saque_no_valor_de_reais(Integer saque) {
 		// Write code here that turns the phrase above into concrete actions
-		this.saque = saldo;
+		saque = 100;
+		
+		this.saque = saque;
+		this.tipoCliente = true;
 
-		if (this.saque != saldo) {
+		if (this.tipoCliente != true && this.saque < 0) {
 			throw new io.cucumber.java.PendingException();
 		}
 	}
 
 	/**
 	 * 
-	 * @param Metodo deve efetuar o saque e atualizar a conta do cliente especial
+	 * @param saldo vai receber o valor do saldo e saque, e deve atualizar a conta
 	 */
 	@Then("Deve efetuar o sque e atualizar o saldo da conta para {int} reais.")
 	public void deve_efetuar_o_sque_e_atualizar_o_saldo_da_conta_para_reais(Integer saldo) {
 		// Write code here that turns the phrase above into concrete actions
-		this.tipoCliente = true;
+		saldo = this.contaEspecial - this.saque;
+		
 		if (tipoCliente = true && this.contaEspecial < 0) {
 			this.saldoAtual = saldo;
 		} else {
@@ -56,42 +60,49 @@ public class conta {
 
 	/**
 	 * 
-	 * @param Metodo que recebe o valor do saldo atual do cliente comum
+	 * @param conta recebe o saldo atual de um cliente comum
 	 */
 	@Given("Um cliente commum com saldo atual de {int} reais")
-	public void um_cliente_commum_com_saldo_atual_de_reais(Integer saldo) {
+	public void um_cliente_commum_com_saldo_atual_de_reais(Integer conta) {
 		// Write code here that turns the phrase above into concrete actions
-		this.contaComum = saldo;
+		conta = -300;
+		this.contaComum = conta;
 
-		if (this.contaComum != saldo) {
+		if (this.contaComum != conta) {
 			throw new io.cucumber.java.PendingException();
 		}
 	}
 
 	/**
 	 * 
-	 * @param Metodo que recebe o valor do solitado do saque
+	 * @param saque recebe o valor do saque que o cliente deseja
 	 */
 	@When("solicitar um saque de {int} reais")
 	public void solicitar_um_saque_de_reais(Integer saque) {
 		// Write code here that turns the phrase above into concrete actions
+		saque = 200;
 		this.saque = saque;
-		
-		if(this.saque != saque) {
-			throw new io.cucumber.java.PendingException();			
+
+		this.tipoCliente = false;
+
+		if (this.tipoCliente != false && this.saque < 0) {
+			throw new io.cucumber.java.PendingException();
 		}
 	}
 
+
 	/**
-	 * @implNote Metodo que retorna uma mensagem para o cliente comum com saldo negativo
+	 * @implNote Metodo tem que retornar uma mensagem para o cliente comum com saldo
+	 *           negativo
 	 */
 	@Then("Nao deve efetuar o saque e deve retornar a mensagem saldo insuficiente")
 	public void nao_deve_efetuar_o_saque_e_deve_retornar_a_mensagem_saldo_insuficiente() {
 		// Write code here that turns the phrase above into concrete actions
-		if(this.tipoCliente = false) {
+		
+		if (this.tipoCliente == false) {
 			System.out.print("Saldo insuficiente");
-		}else {
-			throw new io.cucumber.java.PendingException();			
+		} else {
+			throw new io.cucumber.java.PendingException();
 		}
 	}
 
