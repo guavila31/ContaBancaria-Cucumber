@@ -9,6 +9,6 @@ Feature: Cliente faz saque de dinheiro como um cliente, eu gostaria de sacar din
 
   @tag2
   Scenario Outline: Cliente comum com saldo negativo
-    Given Um cliente commum com saldo atual de -300 reais
+    Given Um cliente commum com saldo atual de 300 reais
     When solicitar um saque de 200 reais
     Then Nao deve efetuar o saque e deve retornar a mensagem saldo insuficiente
