@@ -21,6 +21,10 @@ style="width:100%;margin-left:30%;margin-right:30%"></img>
 <div style="border-bottom: 1px solid grey"></div>
 <span>
 Para usar esse projeto, é necessario instalar a IDE Eclipe e adicionar nele através do "Eclipse Marketplace" o plugin do Cucumber.
+Ao executar o projeto, temos duas opções de executar o Junit, ao executar com a opção dryRun(dryRun=true), notamos que o Junit vai avaliar todas as etapas do arquivo, e se optarmos pela execução strict(strict=true), notamos que o Junit falhará em todas as etapas a menos que todas estejam definidas.
+
+<br><br>
+<i><b>Para mais informações acesse a documentação do Cucumber <a href="https://cucumber.io/docs/cucumber/api/?lang=java">dryRun</a> e <a href="http://rmpestano.github.io/cukedoctor/cucumber/cucumber-documentation.html#_in_strict_mode">strict</a></i></b>
 </span>
 
 </body>
