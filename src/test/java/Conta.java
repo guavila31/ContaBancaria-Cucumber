@@ -1,9 +1,8 @@
-import io.cucumber.core.internal.com.fasterxml.jackson.databind.type.TypeParser;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class conta {
+public class Conta {
 
 	public boolean clienteEspecial = false;
 	public int conta;
@@ -11,7 +10,6 @@ public class conta {
 	public int saldo;
 
 	public void cliente() {
-		
 
 		if (this.clienteEspecial == true) {
 			um_cliente_especial_com_saldo_atual_de_reais(conta);
@@ -115,7 +113,9 @@ public class conta {
 
 		if (this.conta > 0 && this.saque < this.conta && this.clienteEspecial == false) {
 
+		} else if (this.saque > this.conta) {
+			System.out.print("Saldo insuficiente");
 		} else
-			throw new io.cucumber.java.PendingException("Saldo insuficiente");
+			throw new io.cucumber.java.PendingException();
 	}
 }
